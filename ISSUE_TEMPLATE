@@ -1,0 +1,31 @@
+# Issue Title
+
+* If you find bugs in the current samples or documentation requests or bugs file issues in the respective [sample repository](sample-repos.md).
+* If you have new sample requests or issues that is not scoped to a single sample, file issue adhering to the following template.
+
+
+Provide a descriptive title.
+
+
+
+# Additional Info
+
+
+
+Provide the sample repo names which have the issue for sample related issues not scoped to one repo. Alternatively, provide link to the article that needs content update.
+
+
+
+# General
+
+
+
+Provide details on the problem you are experiencing, including step by step instructions to reproduce the issue.
+
+
+
+Please provide a code snippet for your issue if it is relevant, either inline, link to a gist (or similar) or as a zipped attachment.
+
+
+
+For UI problems please provide screenshots inline or as a zipped attachment.
