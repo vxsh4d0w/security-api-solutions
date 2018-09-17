@@ -21,14 +21,14 @@ Here are some ways you can contribute to this:
 
 ## Contribution Workflow
 
-You can review the list of [Microsoft Graph Security samples repositories](sample-repos) to get familiarized with the availability of samples in different programmming languages as well as the state of each sample. 
+You can review the list of [Microsoft Graph Security samples repositories](sample-repos.md) to get familiarized with the availability of samples in different programmming languages as well as the state of each sample. 
 
 We use and recommend the following workflow:
 
 1. Create an issue for your work in the respective repo. 
     - Where to file the issue?
-        - If you plan to contribute to an [existing sample](sample-repos), create an issue in the sample repo where you plan to contribute. 
-        - If you plan to contribute a new sample or update documentation or if your change is not scoped to a certain [sample repo](sample-repos), [create an issue](https://github.com/microsoftgraph/security-api-solutions/issues/new) in this repo.  
+        - If you plan to contribute to an [existing sample](sample-repos.md), create an issue in the sample repo where you plan to contribute. 
+        - If you plan to contribute a new sample or update documentation or if your change is not scoped to a certain [sample repo](sample-repos.md), [create an issue](https://github.com/microsoftgraph/security-api-solutions/issues/new) in this repo.  
     - Reuse an [existing issue](https://github.com/microsoftgraph/security-api-solutions/issues) on the topic, if there is one.
     - Get agreement from the team and the community that your proposed change is a good one.
     - Clearly state that you are going to take on implementing the sample, if that's the case. You can request that the issue be assigned to you. Note: The issue filer and the implementer don't have to be the same person.
@@ -294,7 +294,7 @@ When you submit your changes, via a pull request, our team will be notified and 
  
 ### Can I become an approver for this repository's GitHub pull requests?
 
-Currently, we are not allowing external contributors to approve pull requests in [this](https://github.com/microsoftgraph/security-api-solutions) and other [Microsoft Graph Security samples repositories](sample-repos).
+Currently, we are not allowing external contributors to approve pull requests in [this](https://github.com/microsoftgraph/security-api-solutions) and other [Microsoft Graph Security samples repositories](sample-repos.md).
 
 ### How soon will I get a response about my change request or issue?
 
