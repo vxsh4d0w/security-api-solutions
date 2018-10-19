@@ -87,7 +87,7 @@ Write-Host "Checking for AzureAD module..."
 
 [System.Reflection.Assembly]::LoadFrom($adalforms) | Out-Null
 
-$clientId = "69bf80d6-a0b4-4c50-9d56-6f6cd148ac66"
+$clientId = "ENTER_YOUR_APP_ID_HERE"
 
 $redirectUri = "urn:ietf:wg:oauth:2.0:oob"
 
