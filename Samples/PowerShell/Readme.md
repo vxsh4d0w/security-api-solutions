@@ -24,7 +24,7 @@ The Microsoft Graph Security API provides a unified interface and schema to inte
 ## Prerequisites
 Use of these Microsoft Graph Security API PowerShell samples requires the following:
 * Install the AzureAD PowerShell module by running 'Install-Module AzureAD' or 'Install-Module AzureADPreview' from an elevated PowerShell prompt
-* An Azure tenant that supports the Azure portal with a production or trial license to [onboarded secuirty providers](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/security-api-overview#alerts).
+* An Azure tenant that supports the Azure portal with a production or trial license to [onboarded security providers](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/security-api-overview#alerts).
 * An account with permissions to administer the Security administrator role.
 * PowerShell v5.0 on Windows 10 x64 (PowerShell v4.0 is a minimum requirement for the scripts to function correctly)
 * Note: For PowerShell 4.0 you will require the [PowershellGet Module for PS 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=51451) to enable the usage of the Install-Module functionality
