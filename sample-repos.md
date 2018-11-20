@@ -14,3 +14,4 @@ We have samples in the following languages for Microsoft Graph Security API with
 | .NET - ASPNET MVC | [Sample](https://github.com/microsoftgraph/aspnet-security-api-sample) | [Issues](https://github.com/microsoftgraph/aspnet-security-api-sample/issues) |
 | Python | [Sample](https://github.com/microsoftgraph/python-security-rest-sample) | [Issues](https://github.com/microsoftgraph/python-security-rest-sample/issues) |
 | NodeJS | [Sample](https://github.com/microsoftgraph/nodejs-security-sample) | [Issues](https://github.com/microsoftgraph/nodejs-security-sample/issues) |
+| PowerShell | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/PowerShell) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
