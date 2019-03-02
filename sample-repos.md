@@ -16,4 +16,5 @@ We have samples in the following languages for Microsoft Graph Security API with
 | NodeJS | [Sample](https://github.com/microsoftgraph/nodejs-security-sample) | [Issues](https://github.com/microsoftgraph/nodejs-security-sample/issues) |
 | PowerShell | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/PowerShell) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
 | Power BI | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/Power%20BI) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
+| Jupyter Notebooks| [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Notebooks) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
 | NextJS | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/NextJs) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
