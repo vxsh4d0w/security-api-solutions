@@ -143,9 +143,18 @@ class RequestManager:
         self._print_summary()
 
     def _del_indicators_no_longer_exist(self):
-        for hash_of_indicator_to_delete, tiindicator_id in self.hash_of_indicators_to_delete.items():
+        indicators = list(self.hash_of_indicators_to_delete.values())
+        self.del_count = len(indicators)
+        for i in range(0, len(indicators), 100):
+            request_body = {'value': indicators[i: i+100]}
+            response = requests.post(GRAPH_BULK_DEL_URL, headers=self.headers, json=request_body).json()
+            log_file_name = f"del_{self._get_datetime_now()}.json"
+            print(log_file_name)
+            print(json.dumps(response, indent=2))
+            print()
+            json.dump(response, open(f'{LOG_DIRECTORY_NAME}/{log_file_name}', 'w'), indent=2)
+        for hash_of_indicator_to_delete in self.hash_of_indicators_to_delete.keys():
             self.existing_indicators_hash.pop(hash_of_indicator_to_delete, None)
-            self._del_from_graph(tiindicator_id)
 
     def _print_summary(self):
         self._clear_screen()
@@ -154,10 +163,6 @@ class RequestManager:
         print(f"total response success:   {str(self.success_count).rjust(self.RJUST)}")
         print(f"total response error:     {str(self.error_count).rjust(self.RJUST)}")
         print(f"total indicators deleted: {str(self.del_count).rjust(self.RJUST)}")
-
-    def _del_from_graph(self, tiindicator_id):
-        response_content = str(requests.delete(f"{GRAPH_TI_INDICATORS_URL}/{tiindicator_id}", headers=self.headers).content)
-        self._log_del(tiindicator_id, response_content)
 
     def _post_to_graph(self):
         request_body = {'value': self.indicators_to_be_sent}
@@ -175,18 +180,6 @@ class RequestManager:
             self.indicators_to_be_sent.append(indicator)
         if len(self.indicators_to_be_sent) >= 100:
             self._post_to_graph()
-
-    def _log_del(self, tiindicator_id, response_content):
-        log_json_body = {
-            'tiindicator_id': tiindicator_id,
-            'response_content': response_content
-        }
-        self.del_count += 1
-        log_file_name = f"{self._get_datetime_now()}.json"
-        print(log_file_name)
-        print(json.dumps(log_json_body, indent=2))
-        print()
-        json.dump(log_json_body, open(f'{LOG_DIRECTORY_NAME}/{log_file_name}', 'w'), indent=2)
 
     def _update_headers_if_expired(self):
         if self._get_timestamp() > self.headers_expiration_time:
