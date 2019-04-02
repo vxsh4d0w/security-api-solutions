@@ -65,6 +65,7 @@ def main():
         RequestManager.read_tiindicators()
         sys.exit()
     config.verbose_log = ('-v' in sys.argv)
+    print('fetching & parsing data from misp...')
     events = _get_events()
     parsed_events = list()
     for event in events:
@@ -88,7 +89,8 @@ def main():
         parsed_events.append(parsed_event)
     del events
 
-    with RequestManager() as request_manager:
+    total_indicators = sum([len(v['request_objects']) for v in parsed_events])
+    with RequestManager(total_indicators) as request_manager:
         for request_body in _graph_post_request_body_generator(parsed_events):
             request_manager.handle_indicator(request_body)
 
