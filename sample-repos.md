@@ -14,3 +14,8 @@ We have samples in the following languages for Microsoft Graph Security API with
 | .NET - ASPNET MVC | [Sample](https://github.com/microsoftgraph/aspnet-security-api-sample) | [Issues](https://github.com/microsoftgraph/aspnet-security-api-sample/issues) |
 | Python | [Sample](https://github.com/microsoftgraph/python-security-rest-sample) | [Issues](https://github.com/microsoftgraph/python-security-rest-sample/issues) |
 | NodeJS | [Sample](https://github.com/microsoftgraph/nodejs-security-sample) | [Issues](https://github.com/microsoftgraph/nodejs-security-sample/issues) |
+| PowerShell | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/PowerShell), [Module - PowerShell Gallery](https://www.powershellgallery.com/packages/MicrosoftGraphSecurity/1.0.0),  [Module - Repo](https://github.com/Microsoft/MicrosoftGraphSecurity)| [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
+| Power BI | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/Power%20BI) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
+| Jupyter Notebooks| [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Notebooks) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
+| MISP Threat Indicators | [Sample](https://aka.ms/tipmispsample) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
+| NextJS | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/NextJs) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) |
