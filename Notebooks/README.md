@@ -2,10 +2,6 @@
 
 This repository of Jupyter Notebook samples show how to access Microsoft Graph Security API entities using the [Jupyter Notebooks](https://jupyter.org/). 
 
-The following samples are currently included in this repo:
-* [Microsoft Graph Security Management and Investigation Scenarios](https://github.com/microsoftgraph/security-api-solutions/blob/master/Notebooks/Microsoft%20Graph%20Security%20Management%20and%20Investigation%20Sample.ipynb)
-
-
 These samples are licensed "as-is" under the [MIT License](../../LICENSE).
 
 Refer to the following:
@@ -13,6 +9,16 @@ Refer to the following:
 
 #### Disclaimer
 These samples retrieve information from your tenant. Understand the impact of each sample prior to running it.
+
+## What is Azure Notebooks?
+
+Azure Notebooks is a free hosted service to develop and run Jupyter notebooks in the cloud with no installation. Jupyter is an open source project that lets you easily combine markdown text, executable code (Python, R, and F#), persistent data, graphics, and visualizations onto a single, sharable canvas called a notebook.
+
+## How do Azure Notebooks work?
+Interactive Azure Notebooks provides security insights and actions to investigate anomalies and hunt for malicious behaviors. Each Azure Notebook is purpose-built with a self-contained workflow for a specific use case. Visualizations are included in each Azure Notebook for faster data exploration. 
+
+### Using the Notebooks locally or in other environments
+You can  download the notebooks and use them locally in a supported Python environment (Anaconda Distribution is recommended) or another notebook hosting environment such as Azure Databricks or a JupyterHub environment that supports Python 3.6 or later.
 
 ## Using the Microsoft Graph Security API
 
@@ -24,7 +30,7 @@ The Microsoft Graph Security API provides a unified interface and schema to inte
 * [Configure permissions](https://docs.microsoft.com/en-us/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) and be sure to add the SecurityEvents.ReadWrite.All permission to your application.
 Get your Azure AD tenant administrator to [grant tenant administration consent](https://docs.microsoft.com/en-us/graph/auth-v2-service#3-get-administrator-consent) to your application. This is a one-time activity unless permissions change for the application. 
 * Run the notebook in [Azure Notebooks](https://notebooks.azure.com/). 
-* When your app is registered to call the Microsoft Graph Security API you need to pass the application ID and application secret from the above mentioned steps in to the rspective notebook. 
+* When your app is registered to call the Microsoft Graph Security API you need to pass the application ID and application secret from the above mentioned steps in to the respective notebook. 
 * There are two ways to enter the application ID and secret in any one of the get_secret() functions. 
     * Hardcode it in the notebook and run the notebook. Ensure the notebook is not publicly shared in case you do so for security reasons.
     * Keep the credentials in environment variables and access these. This is recommended from a security point of view.
