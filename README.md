@@ -6,18 +6,6 @@ Welcome to the Microsoft Graph Security repository! This repository is a startin
 * [Microsoft Graph Security Samples](https://github.com/microsoftgraph/security-api-solutions/blob/master/sample-repos.md)
 * [Contribution workflow and guidelines](https://github.com/microsoftgraph/security-api-solutions/blob/master/CONTRIBUTING.md)
 
-# Community
-* If you have questions on application or service or product integrations wih the Microsoft Graph Security API, reach out to the [Using Microsoft Security Graph API tech community](https://techcommunity.microsoft.com/t5/Using-Microsoft-Graph-Security/bd-p/SecurityGraphAPI) 
-* If you find bugs in the current samples or documentation requests or bugs file issues in the respective [sample repository](sample-repos.md).
-* If you have new sample requests or issues that is not scoped to a single sample, [file issues](https://github.com/microsoftgraph/security-api-solutions/issues/new) in this repository.
-* Assign issues in [this](https://github.com/microsoftgraph/security-api-solutions/issues) and [other](sample-repos.md) repos to yourself for fixing in the samples as necessary or contribute to new samples.
-* Follow discussions on [Stack Overflow](https://aka.ms/graphsecuritystackoverflow) [tag: microsoft-graph-security].
-
-# Resources
-* [Microsoft Graph Security API Overview](https://developer.microsoft.com/en-us/graph/docs/concepts/security-concept-overview)
-* [Microsoft Graph Security API reference docs](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/security-api-overview)
-* [SIEM integration using Microsoft Graph Security API](https://developer.microsoft.com/en-us/graph/docs/concepts/security_siemintegration)
-
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
@@ -39,6 +27,19 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 We encourage contributions to this repository. Contributions to this repository will be recognized as follows:
 1.	Contributors will be highlighted [here](https://github.com/microsoftgraph/security-api-solutions/blob/master/contributors.md) for increased visibility and easy discoverability  
 2.	Promotions of contributions via Blogs and Tweets 
+
+
+# Community
+* If you have questions on application or service or product integrations wih the Microsoft Graph Security API, reach out to the [Using Microsoft Security Graph API tech community](https://techcommunity.microsoft.com/t5/Using-Microsoft-Graph-Security/bd-p/SecurityGraphAPI) 
+* If you find bugs in the current samples or documentation requests or bugs file issues in the respective [sample repository](sample-repos.md).
+* If you have new sample requests or issues that is not scoped to a single sample, [file issues](https://github.com/microsoftgraph/security-api-solutions/issues/new) in this repository.
+* Assign issues in [this](https://github.com/microsoftgraph/security-api-solutions/issues) and [other](sample-repos.md) repos to yourself for fixing in the samples as necessary or contribute to new samples.
+* Follow discussions on [Stack Overflow](https://aka.ms/graphsecuritystackoverflow) [tag: microsoft-graph-security].
+
+# Resources
+* [Microsoft Graph Security API Overview](https://developer.microsoft.com/en-us/graph/docs/concepts/security-concept-overview)
+* [Microsoft Graph Security API reference docs](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/security-api-overview)
+* [SIEM integration using Microsoft Graph Security API](https://developer.microsoft.com/en-us/graph/docs/concepts/security_siemintegration)
 
 
 # License
