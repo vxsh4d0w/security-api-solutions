@@ -34,5 +34,12 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
+# Recognition Program
+
+We encourage contributions to this repository. Contributions to this repository will be recognized as follows:
+1.	Contributors will be highlighted [here](https://github.com/microsoftgraph/security-api-solutions/blob/master/contributors.md) for increased visibility and easy discoverability  
+2.	Promotions of contributions via Blogs and Tweets 
+
+
 # License
 This repository is licensed with the [MIT](https://github.com/microsoftgraph/security-api-solutions/blob/master/LICENSE) license. 
