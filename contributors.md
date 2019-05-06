@@ -9,13 +9,14 @@ We are happy to recognize contributions to this repo from the following external
 
 
 The following contributions are sourced by the Microsoft Graph Security API team. 
+
 | **Language**   | **Sample Link** | 
-|:---------------|:--------|:----------|
+|----------------|:----------------|
 | General - Authentication | [Sample](https://github.com/microsoftgraph/Graph-Security-API-Auth-Sample) | 
-| .NET - ASPNET MVC | [Sample](https://github.com/microsoftgraph/aspnet-security-api-sample) | 
+| .NET - ASPNET MVC | [Sample](https://github.com/microsoftgraph/aspnet-security-api-sample) |
 | Python | [Sample](https://github.com/microsoftgraph/python-security-rest-sample) | 
 | NodeJS | [Sample](https://github.com/microsoftgraph/nodejs-security-sample)|
-| PowerShell | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/PowerShell)| 
+| PowerShell | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/PowerShell) |
 | Power BI | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/Power%20BI) | 
 | Jupyter Notebooks| [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/Notebooks) | 
 | MISP Threat Indicators | [Sample](https://aka.ms/tipmispsample)  |
