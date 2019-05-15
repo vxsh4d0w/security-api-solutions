@@ -16,7 +16,7 @@ These samples retrieve information from your tenant. Understand the impact of ea
 
  Microsoft Graph Security connectors for [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview), [Microsoft Flow](https://flow.microsoft.com/), and [PowerApps](https://powerapps.microsoft.com/), greatly simplify the development of automated security workflows. By building playbooks that use the Microsoft Graph Security connector, you can automate common security tasks across multiple security solutions. This reduces the time and resources required to triage, investigate, and remediate security alerts, without the cost and complexity of building and maintaining multiple integrations. Check out the samples in this repository to get started on some of these playbooks.
 
-### Using the Playbooks  
+## Using the Playbooks  
 You can download these sample playbooks and open to manage these in Visual Studio to run it in your environment as per the steps in [Manage logic apps with Visual Studio](https://docs.microsoft.com/en-us/azure/logic-apps/manage-logic-apps-with-visual-studio) guidance. You can build similar playbooks / workflows by following the logic provided in these samples as well.
 
 ## Using the Microsoft Graph Security API
