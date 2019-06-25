@@ -30,8 +30,7 @@ We use and recommend the following workflow:
         - If you plan to contribute to an [existing sample](sample-repos.md), create an issue in the sample repo where you plan to contribute. 
         - If you plan to contribute a new sample or update documentation or if your change is not scoped to a certain [sample repo](sample-repos.md), [create an issue](https://github.com/microsoftgraph/security-api-solutions/issues/new) in this repo.  
     - Reuse an [existing issue](https://github.com/microsoftgraph/security-api-solutions/issues) on the topic, if there is one.
-    - Get agreement from the team and the community that your proposed change is a good one.
-    - Clearly state that you are going to take on implementing the sample, if that's the case. You can request that the issue be assigned to you. Note: The issue filer and the implementer don't have to be the same person.
+    - Clearly state that you are going to take on implementing the sample. You can request that the issue be assigned to you. Note: The issue filer and the implementer don't have to be the same person.
     Note: If you are requesting to contribute a sample in a programming language for which a repo doesn't exist, we will first assign the issue to ourselves and set up a repo for that sample after which you can follow step #2 onwards to code and share the sample. 
 2. Create a personal fork of the respective repository on GitHub (if you don't already have one). Refer to [Contribute using Git](#contribute-using-git) for details on joining the repo, etc.
 3. Create a branch off of master (`git checkout -b mybranch`). 
@@ -46,7 +45,7 @@ We use and recommend the following workflow:
 7. Create a pull request (PR) against the upstream repository's **master** branch.
     - Push your changes to your fork on GitHub (if you haven't already).
 
-Note: It is OK for your PR to include a large number of commits. Once your change is accepted, you will be asked to squash your commits into one or some appropriately small number of commits before your PR is merged.
+Note: It is OK for your PR to include a large number of commits. 
 
 Note: It is OK to create your PR as "[WIP]" (Work In Progress) on the upstream repo before the implementation is done. This can be useful if you'd like to start the feedback process concurrent with the sample implementation. State that this is the case in the initial PR comment.
 

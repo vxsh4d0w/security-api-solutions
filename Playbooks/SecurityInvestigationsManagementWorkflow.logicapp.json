@@ -1,0 +1,389 @@
+{
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "$connections": {
+            "defaultValue": {},
+            "type": "Object"
+        }
+    },
+    "triggers": {
+        "Recurrence_-_Polling_happens_every_15_minutes": {
+            "recurrence": {
+                "frequency": "Minute",
+                "interval": 15
+            },
+            "type": "Recurrence"
+        }
+    },
+    "actions": {
+        "For_each_high_severity_alert,_do_these_steps": {
+            "foreach": "@body('Get_high_severity_alerts_for_prioritized_investigations')?['value']",
+            "actions": {
+                "For_each_of_these_analysts_from_the_list,_do_these_steps": {
+                    "foreach": "@body('Get_the_list_of_on_call_analysts_from_SharePoint')?['value']",
+                    "actions": {
+                        "Append_this_alert_to_HighSeverityAlertCollection": {
+                            "runAfter": {
+                                "Set_HighSeverityAlertDetails": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "AppendToArrayVariable",
+                            "inputs": {
+                                "name": "HighSeverityAlertCollection",
+                                "value": "@variables('HighSeverityAlertDetails')"
+                            }
+                        },
+                        "Create_HTML_table_for_AlertsRelatedToUserCollection": {
+                            "runAfter": {
+                                "Loop_through_UserState_info_for_each_alert": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Table",
+                            "inputs": {
+                                "format": "HTML",
+                                "from": "@variables('AlertsRelatedToUser')"
+                            }
+                        },
+                        "Create_HTML_table_for_HighSeverityAlertDetails": {
+                            "runAfter": {
+                                "Append_this_alert_to_HighSeverityAlertCollection": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Table",
+                            "inputs": {
+                                "format": "HTML",
+                                "from": "@variables('HighSeverityAlertCollection')"
+                            }
+                        },
+                        "Loop_through_UserState_info_for_each_alert": {
+                            "foreach": "@items('For_each_high_severity_alert,_do_these_steps')?['userStates']",
+                            "actions": {
+                                "Condition": {
+                                    "actions": {
+                                        "For_each_of_these_alerts_that_match_the_user,_do_the_following": {
+                                            "foreach": "@body('Get_alerts_that_match_with_the_User_principal_name_of_this_high_severity_alert')?['value']",
+                                            "actions": {
+                                                "Append_to_AlertsRelatedToUserCollection": {
+                                                    "runAfter": {
+                                                        "Set_AlertDetails": [
+                                                            "Succeeded"
+                                                        ]
+                                                    },
+                                                    "type": "AppendToArrayVariable",
+                                                    "inputs": {
+                                                        "name": "AlertsRelatedToUser",
+                                                        "value": "@variables('AlertDetails')"
+                                                    }
+                                                },
+                                                "Set_AlertDetails": {
+                                                    "runAfter": {},
+                                                    "type": "SetVariable",
+                                                    "inputs": {
+                                                        "name": "AlertDetails",
+                                                        "value": {
+                                                            "AlertID": "@items('For_each_of_these_alerts_that_match_the_user,_do_the_following')?['id']",
+                                                            "AssignedTo": "@items('For_each_of_these_alerts_that_match_the_user,_do_the_following')?['assignedTo']",
+                                                            "CreatedDateTime": "@items('For_each_of_these_alerts_that_match_the_user,_do_the_following')?['createdDateTime']",
+                                                            "Description": "@items('For_each_of_these_alerts_that_match_the_user,_do_the_following')?['description']",
+                                                            "Provider": "@items('For_each_of_these_alerts_that_match_the_user,_do_the_following')?['vendorInformation']?['provider']",
+                                                            "RecommendedActions": "@items('For_each_of_these_alerts_that_match_the_user,_do_the_following')?['recommendedActions']",
+                                                            "Severity": "@items('For_each_of_these_alerts_that_match_the_user,_do_the_following')?['severity']"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "runAfter": {
+                                                "Get_alerts_that_match_with_the_User_principal_name_of_this_high_severity_alert": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "Foreach"
+                                        },
+                                        "Get_alerts_that_match_with_the_User_principal_name_of_this_high_severity_alert": {
+                                            "runAfter": {},
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['MicrosoftGraphSecurity']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "get",
+                                                "path": "/v1.0/security/alerts",
+                                                "queries": {
+                                                    "$filter": "userStates/any(a:a/userPrincipalName eq '@{items('Loop_through_UserState_info_for_each_alert')?['userPrincipalName']}' ) "
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "runAfter": {},
+                                    "expression": {
+                                        "and": [
+                                            {
+                                                "not": {
+                                                    "equals": [
+                                                        "@items('For_each_high_severity_alert,_do_these_steps')?['userStates']",
+                                                        ""
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "type": "If"
+                                }
+                            },
+                            "runAfter": {
+                                "Create_HTML_table_for_HighSeverityAlertDetails": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Foreach"
+                        },
+                        "Send_an_email": {
+                            "runAfter": {
+                                "Create_HTML_table_for_AlertsRelatedToUserCollection": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "body": {
+                                    "Body": "\n<html>\n\n<style>\ntable, th, td {\n  border: 1px solid black;\n  border-collapse: collapse;\n}\nth, td {\n  padding: 15px;\n}\n</style>\n\nDetails\n@{body('Create_HTML_table_for_HighSeverityAlertDetails')}\n\n<h3> Initial investigation information </h3>\nFollowing alerts occured in the past 2 hours associated with the same user principal name as this high severity alert:\n\n@{body('Create_HTML_table_for_AlertsRelatedToUserCollection')}\n</html>",
+                                    "Importance": "High",
+                                    "IsHtml": true,
+                                    "Subject": "[FOR INVESTIGATION] New high severity alert assigned to @{items('For_each_of_these_analysts_from_the_list,_do_these_steps')?['Title']}",
+                                    "To": "@{items('For_each_of_these_analysts_from_the_list,_do_these_steps')?['Person_x0020_email']};"
+                                },
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['office365']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "path": "/Mail"
+                            }
+                        },
+                        "Set_HighSeverityAlertDetails": {
+                            "runAfter": {
+                                "Update_alert_assignment_to_the_first_person_on_the_list_and_add_comments": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                                "name": "HighSeverityAlertDetails",
+                                "value": {
+                                    "AlertID": "@items('For_each_high_severity_alert,_do_these_steps')?['id']",
+                                    "AssignedTo": "@items('For_each_high_severity_alert,_do_these_steps')?['assignedTo']",
+                                    "CreatedDateTime": "@items('For_each_high_severity_alert,_do_these_steps')?['createdDateTime']",
+                                    "Description": "@items('For_each_high_severity_alert,_do_these_steps')?['description']",
+                                    "Provider": "@items('For_each_high_severity_alert,_do_these_steps')?['vendorInformation']?['provider']",
+                                    "RecommendedActions": "@items('For_each_high_severity_alert,_do_these_steps')?['recommendedActions']",
+                                    "Severity": "@items('For_each_high_severity_alert,_do_these_steps')?['severity']"
+                                }
+                            }
+                        },
+                        "Update_alert_assignment_to_the_first_person_on_the_list_and_add_comments": {
+                            "runAfter": {},
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "body": {
+                                    "assignedTo": "@items('For_each_of_these_analysts_from_the_list,_do_these_steps')?['Person_x0020_email']",
+                                    "comments": [
+                                        "Investigate this high severity alert - initial investigation details are provided below."
+                                    ],
+                                    "status": "newAlert",
+                                    "vendorInformation": {
+                                        "provider": "@items('For_each_high_severity_alert,_do_these_steps')?['vendorInformation']?['provider']",
+                                        "vendor": "@items('For_each_high_severity_alert,_do_these_steps')?['vendorInformation']?['vendor']"
+                                    }
+                                },
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['MicrosoftGraphSecurity']['connectionId']"
+                                    }
+                                },
+                                "method": "patch",
+                                "path": "/v1.0/security/alerts/@{encodeURIComponent(items('For_each_high_severity_alert,_do_these_steps')?['id'])}"
+                            }
+                        }
+                    },
+                    "runAfter": {
+                        "Get_the_list_of_on_call_analysts_from_SharePoint": [
+                            "Succeeded"
+                        ]
+                    },
+                    "type": "Foreach"
+                },
+                "Get_the_list_of_on_call_analysts_from_SharePoint": {
+                    "runAfter": {},
+                    "type": "ApiConnection",
+                    "inputs": {
+                        "host": {
+                            "connection": {
+                                "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                            }
+                        },
+                        "method": "get",
+                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://<yourdomain>.sharepoint.com/securityanalyst/'))}/tables/@{encodeURIComponent(encodeURIComponent('<guid>'))}/items",
+                        "queries": {
+                            "$top": 1
+                        }
+                    }
+                }
+            },
+            "runAfter": {
+                "Get_high_severity_alerts_for_prioritized_investigations": [
+                    "Succeeded"
+                ]
+            },
+            "type": "Foreach"
+        },
+        "Get_all_alerts_that_triggered_in_the_past_15_minutes": {
+            "runAfter": {},
+            "type": "ApiConnection",
+            "inputs": {
+                "host": {
+                    "connection": {
+                        "name": "@parameters('$connections')['MicrosoftGraphSecurity']['connectionId']"
+                    }
+                },
+                "method": "get",
+                "path": "/v1.0/security/alerts",
+                "queries": {
+                    "$filter": "createddatetime gt @{addMinutes(utcNow(), -15)}"
+                }
+            }
+        },
+        "Get_high_severity_alerts_for_prioritized_investigations": {
+            "runAfter": {
+                "Initialize_AlertsRelatedToUser": [
+                    "Succeeded"
+                ]
+            },
+            "type": "ApiConnection",
+            "inputs": {
+                "host": {
+                    "connection": {
+                        "name": "@parameters('$connections')['MicrosoftGraphSecurity']['connectionId']"
+                    }
+                },
+                "method": "get",
+                "path": "/v1.0/security/alerts",
+                "queries": {
+                    "$filter": "severity eq 'high' and createddatetime gt @{addMinutes(utcNow(), -15)}"
+                }
+            }
+        },
+        "Initialize_AlertDetails": {
+            "runAfter": {},
+            "type": "InitializeVariable",
+            "inputs": {
+                "variables": [
+                    {
+                        "name": "AlertDetails",
+                        "type": "Object",
+                        "value": {
+                            "AlertID": "1",
+                            "AssignedTo": "initialize",
+                            "CreatedDateTime": "2",
+                            "Description": "initialize",
+                            "Provider": "initialize",
+                            "RecommendedActions": "initialize",
+                            "Severity": "low"
+                        }
+                    }
+                ]
+            }
+        },
+        "Initialize_AlertsRelatedToUser": {
+            "runAfter": {
+                "Initialize_HighSeverityAlertCollection": [
+                    "Succeeded"
+                ]
+            },
+            "type": "InitializeVariable",
+            "inputs": {
+                "variables": [
+                    {
+                        "name": "AlertsRelatedToUser",
+                        "type": "Array",
+                        "value": []
+                    }
+                ]
+            }
+        },
+        "Initialize_HighSeverityAlertCollection": {
+            "runAfter": {
+                "Initialize_HighSeverityAlertDetails": [
+                    "Succeeded"
+                ]
+            },
+            "type": "InitializeVariable",
+            "inputs": {
+                "variables": [
+                    {
+                        "name": "HighSeverityAlertCollection",
+                        "type": "Array",
+                        "value": []
+                    }
+                ]
+            }
+        },
+        "Initialize_HighSeverityAlertDetails": {
+            "runAfter": {
+                "Initialize_AlertDetails": [
+                    "Succeeded"
+                ]
+            },
+            "type": "InitializeVariable",
+            "inputs": {
+                "variables": [
+                    {
+                        "name": "HighSeverityAlertDetails",
+                        "type": "Object",
+                        "value": {
+                            "AlertID": "1",
+                            "AssignedTo": "Initialize",
+                            "CreatedDateTime": "2",
+                            "Description": "Initialize",
+                            "Provider": "Initialize",
+                            "RecommendedActions": "Initialize",
+                            "Severity": "low"
+                        }
+                    }
+                ]
+            }
+        },
+        "Send_these_alerts_to_the_Event_Hub": {
+            "runAfter": {
+                "Get_all_alerts_that_triggered_in_the_past_15_minutes": [
+                    "Succeeded"
+                ]
+            },
+            "type": "ApiConnection",
+            "inputs": {
+                "body": [
+                    {
+                        "ContentData": "@{base64(json(string(body('Get_all_alerts_That_triggered_in_the_past_15_minutes')?['value'])))}"
+                    }
+                ],
+                "host": {
+                    "connection": {
+                        "name": "@parameters('$connections')['eventhubs']['connectionId']"
+                    }
+                },
+                "method": "post",
+                "path": "/@{encodeURIComponent('insights-logs-alert')}/events/batch",
+                "queries": {
+                    "partitionKey": "1"
+                }
+            }
+        }
+    },
+    "outputs": {}
+}

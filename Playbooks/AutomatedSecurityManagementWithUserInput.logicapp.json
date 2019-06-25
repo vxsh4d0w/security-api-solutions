@@ -1,0 +1,157 @@
+{
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "$connections": {
+            "defaultValue": {},
+            "type": "Object"
+        }
+    },
+    "triggers": {
+        "Recurrence_-_Polling_happens_every_15_minutes": {
+            "recurrence": {
+                "frequency": "Minute",
+                "interval": 15
+            },
+            "type": "Recurrence"
+        }
+    },
+    "actions": {
+        "For_each": {
+            "foreach": "@body('Get_list_of_new_alerts_triggered_in_the_past_15_minutes')?['value']",
+            "actions": {
+                "For_each_of_these_alerts,_do_these_steps": {
+                    "foreach": "@items('For_each')?['userStates']",
+                    "actions": {
+                        "Condition": {
+                            "actions": {
+                                "Condition_2": {
+                                    "actions": {
+                                        "Create_a_Teams_channel_for_alert_investigation_with_security_analysts": {
+                                            "runAfter": {},
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "body": {
+                                                    "displayName": "Alert Investigations"
+                                                },
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['teams_1']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "post",
+                                                "path": "/beta/groups/@{encodeURIComponent('Alert Investigations')}/channels"
+                                            }
+                                        }
+                                    },
+                                    "runAfter": {
+                                        "Send_email_with_options": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "else": {
+                                        "actions": {
+                                            "Close_the_alert_based_on_user_input": {
+                                                "runAfter": {},
+                                                "type": "ApiConnection",
+                                                "inputs": {
+                                                    "body": {
+                                                        "comments": "Closing alert per user input",
+                                                        "status": "resolved",
+                                                        "vendorInformation": {
+                                                            "provider": "@items('For_each')?['vendorInformation']?['provider']",
+                                                            "vendor": "@items('For_each')?['vendorInformation']?['vendor']"
+                                                        }
+                                                    },
+                                                    "host": {
+                                                        "connection": {
+                                                            "name": "@parameters('$connections')['MicrosoftGraphSecurity']['connectionId']"
+                                                        }
+                                                    },
+                                                    "method": "patch",
+                                                    "path": "/v1.0/security/alerts/@{encodeURIComponent(items('For_each')?['id'])}"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "expression": {
+                                        "and": [
+                                            {
+                                                "equals": [
+                                                    "@body('Send_email_with_options')?['SelectedOption']",
+                                                    "I'mUnsure"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "type": "If"
+                                },
+                                "Send_email_with_options": {
+                                    "runAfter": {},
+                                    "type": "ApiConnectionWebhook",
+                                    "inputs": {
+                                        "body": {
+                                            "Message": {
+                                                "Body": "@{items('For_each')?['title']}  got triggered on @{items('For_each')?['createdDateTime']}\nProvide your input so as to help resolve this alert automatically.  ",
+                                                "Importance": "Normal",
+                                                "Options": "IgnoreThisAlert,I'mUnsure",
+                                                "Subject": "Your input is required on this alert",
+                                                "To": "@{items('For_each_of_these_alerts,_do_these_steps')?['userPrincipalName']}"
+                                            },
+                                            "NotificationUrl": "@{listCallbackUrl()}"
+                                        },
+                                        "host": {
+                                            "connection": {
+                                                "name": "@parameters('$connections')['office365']['connectionId']"
+                                            }
+                                        },
+                                        "path": "/mailwithoptions/$subscriptions"
+                                    }
+                                }
+                            },
+                            "runAfter": {},
+                            "expression": {
+                                "and": [
+                                    {
+                                        "not": {
+                                            "equals": [
+                                                "@items('For_each_of_these_alerts,_do_these_steps')?['userPrincipalName']",
+                                                ""
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "type": "If"
+                        }
+                    },
+                    "runAfter": {},
+                    "type": "Foreach"
+                }
+            },
+            "runAfter": {
+                "Get_list_of_new_alerts_triggered_in_the_past_15_minutes": [
+                    "Succeeded"
+                ]
+            },
+            "type": "Foreach"
+        },
+        "Get_list_of_new_alerts_triggered_in_the_past_15_minutes": {
+            "runAfter": {},
+            "type": "ApiConnection",
+            "inputs": {
+                "host": {
+                    "connection": {
+                        "name": "@parameters('$connections')['MicrosoftGraphSecurity']['connectionId']"
+                    }
+                },
+                "method": "get",
+                "path": "/v1.0/security/alerts",
+                "queries": {
+                    "$filter": "createddatetime gt @{addMinutes(utcNow(), -15)}"
+                }
+            }
+        }
+    },
+    "outputs": {}
+}
