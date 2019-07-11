@@ -27,7 +27,7 @@ We have a starting set of curated queries listed in the table below. Read the gu
 | Scenarios                 | 	Query                                   |   Variations                  |
 |:--------------------------|:------------------------------------------|:------------------------------|
 | Most recent 3 alerts from each security provider	| /security/alerts?$top=3	| Substitute 3 by any number |
-| Alerts created in a certain time interval	| /security/alerts?$filter=createdDateTime gt 2019-0401T00:00:00.000Z and createdDateTime lt 2019-0505T00:00:00.000Z | Change date time (e.g. 2019-0401T00:00:00.000Z) accordingly and/or use just eq, gt and lt |
+| Alerts created in a certain time interval	| /security/alerts?$filter=createdDateTime gt 2019-04-01T00:00:00.000Z and createdDateTime lt 2019-05-05T00:00:00.000Z | Change date time (e.g. 2019-04-01T00:00:00.000Z) accordingly and/or use just eq, gt and lt |
 | Alerts with high severity  	| /security/alerts?$filter=severity eq 'high'	| Substitute high with medium, low, informational, or unknown to get other severities |
 | Alerts with high severity in a certain time interval	| /security/alerts?$filter=createdDateTime gt {enter start datetime} and createdDateTime lt {enter end datetime} and severity eq 'high'|
 | Alerts from specific providers| /security/alerts?$filter=vendorInformation/provider eq 'ASC' | 	Change provider value to get other variations. For e.g. IPC, WDATP, etc. |
