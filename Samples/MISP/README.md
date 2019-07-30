@@ -19,21 +19,21 @@ After the prerequisites are installed or met, perform the following steps to use
 1. To run script, go to the root directory of misp-graph-script and enter `PYTHONHASHSEED=0 python3 script.py` in the command line. 
 
 ## App Registration
-To configure the samples, you'll need to register a new application in the Microsoft [Application Registration Portal](https://apps.dev.microsoft.com/).
+To configure the samples, you'll need to register a new application in the Microsoft [Application Registration Portal](https://go.microsoft.com/fwlink/?linkid=2083908).
 Follow these steps to register a new application:
-1. Sign in to the [Application Registration Portal](https://apps.dev.microsoft.com/) using either your personal or work or school account.
+1. Sign in to the [Application Registration Portal](https://go.microsoft.com/fwlink/?linkid=2083908) using either your personal or work or school account.
 
-1. Under My applications, choose Add an app. If you're using an Office 365 account and see two categories listed (Converged or Azure AD only), choose Add an app for the Converged applications section.
+2. Choose **New registration**.
 
-1. Enter an application name, and choose Create. (Do not choose Guided Setup.)
+3. Enter an application name, and choose **Register**.
 
-1. Next you'll see the registration page for your app. Copy and save the Application Id field.You will need it later to complete the configuration process.
+4. Next you'll see the overview page for your app. Copy and save the **Application Id** field. You will need it later to complete the configuration process.
 
-1. Under Application Secrets, choose Generate New Password. A new password will be displayed in the New password generated dialog. Copy this password. You will need it later to complete the configuration process.
+5. Under **Certificates & secrets**, choose **New client secret** and add a quick description. A new secret will be displayed in the **Value** column. Copy this password. You will need it later to complete the configuration process and it will not be shown again.
 
-1. Under Platforms, choose Add platform > Web.
+6. Under **API permissions**, choose **Add a permission > Microsoft Graph**.
 
-1. Under Delegated Permissions, add the permissions/scopes required for the sample. This sample requires ThreatIndicators.ReadWrite.OwnedBy.
+1. Under **Application Permissions**, add the permissions/scopes required for the sample. This sample requires **ThreatIndicators.ReadWrite.OwnedBy**.
     >Note: See the [Microsoft Graph permissions reference](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) for more information about Graph's permission model.
 
 As the final step in configuring the script, modify the config.py file in the root folder of your cloned repo.
