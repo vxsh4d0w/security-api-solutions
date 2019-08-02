@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- ms-graph
+languages:
+- powershell
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Microsoft Graph
+  services:
+  - Security
+  createdDate: 9/14/2018 2:58:06 PM
+---
 # Microsoft Graph Security API 
 
 Welcome to the Microsoft Graph Security repository! This repository is a starting point for all Graph Security application developers to share content and sample code in different languages for Graph Security application integration scenarios. You can also file [issues](https://github.com/microsoftgraph/security-api-solutions/issues) faced during integration with the [Microsoft Graph Security API](https://www.microsoft.com/en-us/security/intelligence-security-api). 
