@@ -42,9 +42,9 @@ function RunTI() {
       print.logTIs(indicators);
       return GraphSecurity.getOneTI(indicators.value[0].id)
     })
-    .then(createdTI => {
-      print.logTI(createdTI);
-      return GraphSecurity.updateTI(createdTI.id);
+    .then(tiData => {
+      print.logTI(tiData);
+      return GraphSecurity.updateTI(tiData.id);
     })
     .then(updatedTI => {
       print.logUpdateTI(updatedTI);

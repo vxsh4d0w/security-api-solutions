@@ -166,7 +166,6 @@ def create_ti(tibody=None):
     print("########################################################################################")
     print("Calling the Microsoft Graph Security API...")
     print()
-
     print('CREATE "%s"' % ti_url)
     print()
     print("Headers :")
