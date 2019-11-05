@@ -49,10 +49,10 @@ graph_auth = {
 Once changes are complete, save the config file. After you've completed these steps and have received [admin consent](https://github.com/microsoftgraph/python-security-rest-sample#Get-Admin-consent-to-view-Security-data) for your app, you'll be able to run the script.py sample as covered below.
 
 ## Configurations
-### Target Product
+#### Target Product
 Possible values for **targetProduct** are: `Azure Sentinel`, `Microsoft Defender ATP`.
 
-### Misp Event Filter
+#### Misp Event Filter
 Filters can be set in the config.py file under the "misp_event_filters" property
 
 Below is a list of parameters that can be passed to the filter (source: https://pymisp.readthedocs.io/modules.html):
@@ -115,27 +115,27 @@ misp_event_filters = []
 ```
 This gets all events.
 
-### Action
+#### Action
 Possible **action** values are: `alert`, `allow`, `block`.
 
-### Passive Only
+#### Passive Only
 `passiveOnly = False`
 
-### Days to Expire
+#### Days to Expire
 This property is used to specify the amount of days the records will expire in Microsoft Graph Security API. The default value for days to expire is 30.  
 
 `days_to_expire = 5`
 
-### Misp Key
+#### Misp Key
 The Misp Key is required to fetch data from your Misp instance. 
 It can be found in the event actions menu under automation on the website of the Misp instance.
 
 `misp_key = '<misp key>'`
 
-### Misp Domain
+#### Misp Domain
 Misp Domain is the base URL of your MISP instance.
 
-### Misp Verify Cert
+#### Misp Verify Cert
 This gives you the option to choose if python should validate the certificate of the misp instance. This allows ease within testing environments.
 It is recommended to use a valid SSL cert in production and change this value to True.
 
@@ -169,13 +169,13 @@ We'd love to get your feedback about the MISP to Microsoft Graph Security script
 
 Your feedback is important to us. Connect with us on [Microsoft tech community](https://techcommunity.microsoft.com/t5/Using-Microsoft-Graph-Security/bd-p/SecurityGraphAPI) or [Stack Overflow](https://stackoverflow.com/questions/tagged/microsoft-graph-security). On Stack Overflow tag your questions with [microsoft-graph-security].
 
-## Additional resources
+### Additional resources
 * [Microsoft Graph Security Documentation](https://developer.microsoft.com/en-us/graph/docs/concepts/security-concept-overview)
 * [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
 * [Microsoft code samples](https://developer.microsoft.com/en-us/graph/code-samples-and-sdks)
 * [MISP to Microsoft Graph Security connector](https://www.circl.lu/doc/misp/connectors/#misp-to-microsoft-graph-security-script)
 
-## Copyright
+### Copyright
 Copyright (c) 2018 Microsoft. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
