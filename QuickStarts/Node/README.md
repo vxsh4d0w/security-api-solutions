@@ -11,8 +11,8 @@ This repository contains a very simple Node application that implements the Micr
 - GET, PATCH, and DELETE one TI indicator
 - CREATE, PATCH and DELETE multiple TI indicators
 - DELETE multiple TI indicators by External IDs
-> > - PATCH and DELETE bulk TI indicators currently support only `Azure Sentinel` **targetProduct**.
-> > - **targetProduct** and **expirationDateTime** are required for PATCH and DELETE bulk methods.
+> - PATCH and DELETE bulk TI indicators currently support only `Azure Sentinel` **targetProduct**.
+> - **targetProduct** and **expirationDateTime** are required for PATCH and DELETE bulk methods.
 
 ## App Registration
 To configure the sample, you'll need to register a new application in the Microsoft [Application Registration Portal](https://go.microsoft.com/fwlink/?linkid=2083908).
@@ -29,7 +29,7 @@ Follow these steps to register a new application:
 
 6. Under **API permissions**, choose **Add a permission > Microsoft Graph**.
 
-1. Under **Application Permissions**, add the permissions/scopes required for the sample. This sample requires **ThreatIndicators.ReadWrite.OwnedBy**.
+7. Under **Application Permissions**, add the permissions/scopes required for the sample. This sample requires **ThreatIndicators.ReadWrite.OwnedBy**.
     >Note: See the [Microsoft Graph permissions reference](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) for more information about Graph's permission model.
 
 As the final step in configuring the script, modify the config.py file in the root folder of your cloned repo.
