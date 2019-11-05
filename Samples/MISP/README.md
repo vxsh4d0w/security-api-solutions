@@ -169,7 +169,7 @@ We'd love to get your feedback about the MISP to Microsoft Graph Security script
 
 Your feedback is important to us. Connect with us on [Microsoft tech community](https://techcommunity.microsoft.com/t5/Using-Microsoft-Graph-Security/bd-p/SecurityGraphAPI) or [Stack Overflow](https://stackoverflow.com/questions/tagged/microsoft-graph-security). On Stack Overflow tag your questions with [microsoft-graph-security].
 
-### Additional resources
+## Additional resources
 * [Microsoft Graph Security Documentation](https://developer.microsoft.com/en-us/graph/docs/concepts/security-concept-overview)
 * [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
 * [Microsoft code samples](https://developer.microsoft.com/en-us/graph/code-samples-and-sdks)
