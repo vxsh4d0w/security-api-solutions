@@ -13,8 +13,8 @@ This repository contains a very simple C# console application that implements th
 - GET, PATCH, and DELETE one TI indicator
 - CREATE, PATCH, and DELETE multiple TI indicators
 - DELETE multiple TI indicators by External IDs
-> > - PATCH and DELETE bulk TI indicators currently support only `Azure Sentinel` **targetProduct**.
-> > - **targetProduct** and **expirationDateTime** are required for PATCH and DELETE bulk methods.
+> * PATCH and DELETE bulk TI indicators currently support only `Azure Sentinel` **targetProduct**.
+> * **targetProduct** and **expirationDateTime** are required for PATCH and DELETE bulk methods.
 
 ## App Registration
 To configure the sample, you'll need to register a new application in the Microsoft [Application Registration Portal](https://go.microsoft.com/fwlink/?linkid=2083908).
@@ -54,8 +54,8 @@ Once changes are complete, save the file. After you've completed these steps and
 3) Install necessary dependencies
 4) Run the application
 
-## Additional Resources
-For additional informaiton on using Microsoft Graph or the Microsoft Graph Security API, please visit <https://docs.microsoft.com/graph/api/resources/security-api-overview>
+# Additional Resources
+For additional information on using Microsoft Graph or the Microsoft Graph Security API, please visit <https://docs.microsoft.com/graph/api/resources/security-api-overview>
 
-## Copyright (c) Microsoft Corporation. All rights reserved.
-## Licensed under the MIT License. 
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. 
