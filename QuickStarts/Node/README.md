@@ -12,7 +12,7 @@ This repository contains a very simple Node application that implements the Micr
 - CREATE, PATCH and DELETE multiple TI indicators
 - DELETE multiple TI indicators by External IDs
 > - PATCH and DELETE bulk TI indicators currently support only `Azure Sentinel` **targetProduct**.
-> - **targetProduct** and **expirationDateTime** are required for PATCH and DELETE bulk methods.
+> - **targetProduct** and **expirationDateTime** are required for PATCH bulk methods.
 
 ## App Registration
 To configure the sample, you'll need to register a new application in the Microsoft [Application Registration Portal](https://go.microsoft.com/fwlink/?linkid=2083908).
