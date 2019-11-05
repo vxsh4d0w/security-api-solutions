@@ -159,23 +159,23 @@ Below is a CRONTAB entry example of running the script every Sunday at 2am
 
 0 2 * * Sun /home/mark/misp-graph-script/python3 script.sh
 
-# Contributing
+## Contributing
 If you'd like to contribute to this sample, see [CONTRIBUTING.MD](https://github.com/microsoftgraph/security-api-solutions/blob/master/CONTRIBUTING.md).
 
 This project has adopted the Microsoft Open Source Code of Conduct. For more information, see the Code of Conduct FAQ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-# Questions and comments
+## Questions and comments
 We'd love to get your feedback about the MISP to Microsoft Graph Security script. You can send your questions and suggestions to us in the Issues section of this repository.
 
 Your feedback is important to us. Connect with us on [Microsoft tech community](https://techcommunity.microsoft.com/t5/Using-Microsoft-Graph-Security/bd-p/SecurityGraphAPI) or [Stack Overflow](https://stackoverflow.com/questions/tagged/microsoft-graph-security). On Stack Overflow tag your questions with [microsoft-graph-security].
 
-# Additional resources
+## Additional resources
 * [Microsoft Graph Security Documentation](https://developer.microsoft.com/en-us/graph/docs/concepts/security-concept-overview)
 * [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
 * [Microsoft code samples](https://developer.microsoft.com/en-us/graph/code-samples-and-sdks)
 * [MISP to Microsoft Graph Security connector](https://www.circl.lu/doc/misp/connectors/#misp-to-microsoft-graph-security-script)
 
-# Copyright
+## Copyright
 Copyright (c) 2018 Microsoft. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
