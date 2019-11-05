@@ -54,8 +54,8 @@ Once changes are complete, save the file. After you've completed these steps and
 3) Install necessary dependencies
 4) Run the application
 
-# Additional Resources
+## Additional Resources
 For additional information on using Microsoft Graph or the Microsoft Graph Security API, please visit <https://docs.microsoft.com/graph/api/resources/security-api-overview>
 
-# Copyright
+## Copyright
 Copyright (c) 2018 Microsoft. All rights reserved.
