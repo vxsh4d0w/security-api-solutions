@@ -57,5 +57,5 @@ Once changes are complete, save the file. After you've completed these steps and
 # Additional Resources
 For additional information on using Microsoft Graph or the Microsoft Graph Security API, please visit <https://docs.microsoft.com/graph/api/resources/security-api-overview>
 
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. 
+# Copyright
+Copyright (c) 2018 Microsoft. All rights reserved.
