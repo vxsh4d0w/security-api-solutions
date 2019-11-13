@@ -9,7 +9,7 @@ This repository contains a very simple Node application that implements the Micr
 - GET all secure scores
 - GET all TI Indicators
 - GET, PATCH, and DELETE one TI indicator
-- CREATE, PATCH and DELETE multiple TI indicators
+- POST, PATCH and DELETE multiple TI indicators
 - DELETE multiple TI indicators by External IDs
 > - PATCH and DELETE bulk TI indicators currently support only `Azure Sentinel` **targetProduct**.
 > - **targetProduct** and **expirationDateTime** are required for PATCHing TIs.
