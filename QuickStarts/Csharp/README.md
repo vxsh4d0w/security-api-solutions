@@ -11,7 +11,7 @@ This repository contains a very simple C# console application that implements th
 - PATCH one secure score control profile
 - GET all TI Indicators
 - GET, PATCH, and DELETE one TI indicator
-- CREATE, PATCH, and DELETE multiple TI indicators
+- POST, PATCH, and DELETE multiple TI indicators
 - DELETE multiple TI indicators by External IDs
 > * PATCH and DELETE bulk TI indicators currently support only `Azure Sentinel` **targetProduct**.
 > * **targetProduct** and **expirationDateTime** are required for PATCH and DELETE bulk methods.
