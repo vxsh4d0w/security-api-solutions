@@ -46,7 +46,7 @@ Once changes are complete, save the file. After you've completed these steps and
 
 ## Notes:
 * The "Main" function in the Program.cs class is the entry point for the application.
-* Uncomment the code to initialize the classes and call the methods
+* Uncomment the code in the function to initialize the classes and call the methods
 
 ## Instructions
 1) Clone this repository
