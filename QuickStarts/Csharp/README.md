@@ -51,7 +51,7 @@ Once changes are complete, save the file. After you've completed these steps and
 ## Instructions
 1) Clone this repository
 2) Register an application using the steps above
-3) Install necessary dependencies
+3) Install necessary dependencies via NuGet
 4) Run the application
 
 ## Additional Resources
