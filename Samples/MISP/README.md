@@ -38,7 +38,7 @@ Follow these steps to register a new application:
 
 As the final step in configuring the script, modify the config.py file in the root folder of your cloned repo.
 
-Update tenent, client_id, and client_secret in config.py
+Update tenant, client_id, and client_secret in config.py
 ```
 graph_auth = {
     'tenant': '<tenant id>',
