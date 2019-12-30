@@ -34,7 +34,7 @@ Follow these steps to register a new application:
 1. Under **Application Permissions**, add the permissions/scopes required for the sample. This sample requires **ThreatIndicators.ReadWrite.OwnedBy**, **SecurityEvents.ReadWrite.All**.
     >Note: See the [Microsoft Graph permissions reference](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) for more information about Graph's permission model.
 
-As the final step in configuring the script, modify the AccessToken.cs file in the root folder of your cloned repo.
+As the final step in configuring the script, modify the AccessToken.cs file.
 
 Update the variables in the file as follows:
 ```
