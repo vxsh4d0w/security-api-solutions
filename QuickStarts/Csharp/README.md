@@ -42,7 +42,7 @@ static readonly string tenantId = "<enter your tenant ID>";
 static readonly string appId = "<enter your application/client ID>";
 static readonly string appSecret = "<enter your application/client secret>";
 ```
-Once changes are complete, save the file. After you've completed these steps and have received [admin consent](https://github.com/microsoftgraph/python-security-rest-sample#Get-Admin-consent-to-view-Security-data) for your app, you'll be able to run the app.js sample as covered below.
+Once changes are complete, save the file. After you've completed these steps and have received [admin consent](https://github.com/microsoftgraph/python-security-rest-sample#Get-Admin-consent-to-view-Security-data) for your app, you'll be able to run the sample as covered below.
 
 ## Notes:
 * The "Main" function in the Program.cs class is the entry point for the application.
