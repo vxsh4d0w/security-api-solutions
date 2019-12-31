@@ -1,7 +1,11 @@
 # MISP to Microsoft Graph Security Script
-The script provides clients with MISP instances to migrate threat indicators to the Microsoft Graph Security API. 
+The <b> MISP to Microsoft Graph Security Script </b> enables you to connect your custom threat indicators or Indicators of Comprosmise (IoCs) and make these available in the following Microsoft products: **[Azure Sentinel](https://azure.microsoft.com/en-us/services/azure-sentinel/)**, **[Microsoft Defender ATP](https://www.microsoft.com/en-us/microsoft-365/windows/microsoft-defender-atp/)
+)**. <br/>
+The script provides clients with MISP instances to migrate threat indicators to the [Microsoft Graph Security API](https://aka.ms/graphsecuritydocs). 
 
-For more information on MISP visit https://www.misp-project.org/
+For more information on Microsoft Graph Security API visit [Microsoft Graph Security API](https://aka.ms/graphsecuritydocs). <br/>
+For more information on Microsoft Graph visit [Microsoft Graph](https://developer.microsoft.com/en-us/graph). <br/>
+For more information on MISP visit https://www.misp-project.org/.
 
 ## Prerequisites
 Before installing the sample:
@@ -19,22 +23,31 @@ After the prerequisites are installed or met, perform the following steps to use
 1. To run script, go to the root directory of misp-graph-script and enter `PYTHONHASHSEED=0 python3 script.py` in the command line. 
 
 ## App Registration
-To configure the samples, you'll need to register a new application in the Microsoft [Application Registration Portal](https://go.microsoft.com/fwlink/?linkid=2083908).
+To configure the sample, you'll need to register a new application in the Microsoft [Application Registration Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 Follow these steps to register a new application:
-1. Sign in to the [Application Registration Portal](https://go.microsoft.com/fwlink/?linkid=2083908) using either your personal or work or school account.
+1. Sign in to the [Application Registration Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) using either your personal or work or school account.
 
-2. Choose **New registration**.
+1. Choose **New registration**.
 
-3. Enter an application name, and choose **Register**.
+1. Enter an application name, and choose **Register**.
 
-4. Next you'll see the overview page for your app. Copy and save the **Application Id** field. You will need it later to complete the configuration process.
+1. Next you'll see the overview page for your app. Copy and save the **Application Id** field. You will need it later to complete the configuration process.
 
-5. Under **Certificates & secrets**, choose **New client secret** and add a quick description. A new secret will be displayed in the **Value** column. Copy this password. You will need it later to complete the configuration process and it will not be shown again.
+1. Under **Certificates & secrets**, choose **New client secret** and add a quick description. A new secret will be displayed in the **Value** column. Copy this password. You will need it later to complete the configuration process and it will not be shown again.
 
-6. Under **API permissions**, choose **Add a permission > Microsoft Graph**.
+1. Under **API permissions**, choose **Add a permission > Microsoft Graph**.
 
 1. Under **Application Permissions**, add the permissions/scopes required for the sample. This sample requires **ThreatIndicators.ReadWrite.OwnedBy**.
     >Note: See the [Microsoft Graph permissions reference](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) for more information about Graph's permission model.
+    
+1. Modify the RequestManager.py file to comment out line 121-124. (This allows the script to run without failing due to line 123 being divided by `avg_speed` incase it starts as `0`.
+
+1. Modify the script.py to add in `config.misp_verifycert` at line 13. Ensure it looks like below.
+```
+ misp = PyMISP(config.misp_domain, config.misp_key, config.misp_verifycert)
+```
+
+10. Modify config.py file to add in `misp_verifycert = False` anywhere in the file.
 
 As the final step in configuring the script, modify the config.py file in the root folder of your cloned repo.
 
@@ -46,6 +59,7 @@ graph_auth = {
     'client_secret': '<client secret>',
 }
 ```
+
 Once changes are complete, save the config file. After you've completed these steps and have received [admin consent](https://github.com/microsoftgraph/python-security-rest-sample#Get-Admin-consent-to-view-Security-data) for your app, you'll be able to run the script.py sample as covered below.
 
 ## Configurations
@@ -150,7 +164,7 @@ In the command line, run `python3 script.py -r`
    * To aggregate all the requests that resulted in errors to a file, run `cat *_error_* > <filename>.txt` in the command line.
 
 ## Script Output
-As the script runs, it prints out the request body sent to the Graph API and the response from the Graph API.
+As the script runs, it prints out the request body sent to the Microsoft Graph Security API and the response from the Microsoft Graph Security API.
 
 Every request is logged as a json file under the directory "logs". The name of the json file is the datetime of when the request is completed.
 
