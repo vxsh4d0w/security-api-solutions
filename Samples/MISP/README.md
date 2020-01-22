@@ -1,6 +1,6 @@
 # MISP to Microsoft Graph Security Script
 The <b> MISP to Microsoft Graph Security Script </b> enables you to connect your custom threat indicators or Indicators of Comprosmise (IoCs) and make these available in the following Microsoft products: **[Azure Sentinel](https://azure.microsoft.com/en-us/services/azure-sentinel/)**, **[Microsoft Defender ATP](https://www.microsoft.com/en-us/microsoft-365/windows/microsoft-defender-atp/)
-)**. <br/>
+<br/>
 The script provides clients with MISP instances to migrate threat indicators to the [Microsoft Graph Security API](https://aka.ms/graphsecuritydocs). 
 
 For more information on Microsoft Graph Security API visit [Microsoft Graph Security API](https://aka.ms/graphsecuritydocs). <br/>
@@ -11,6 +11,7 @@ For more information on MISP visit https://www.misp-project.org/.
 Before installing the sample:
 * Install Python 3.x version from https://www.python.org/.
 * To register your application for access to Microsoft Graph, you'll need either a [Microsoft account](https://www.outlook.com/) or an [Office 365 for business account](https://msdn.microsoft.com/en-us/office/office365/howto/setup-development-environment#bk_Office365Account). If you don't have one of these, you can create a Microsoft account for free at [outlook.com](https://www.outlook.com/). 
+* Ensure MISP Server is installed and can be connected to - refer to MISP install details at https://www.misp-project.org/download/  
 
 **For more info on how to register app, see "App Registration" section.**
 
