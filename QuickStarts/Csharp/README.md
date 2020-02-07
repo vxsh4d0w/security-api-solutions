@@ -14,7 +14,7 @@ This repository contains a very simple C# console application that implements th
 - POST, PATCH, and DELETE multiple TI indicators
 - DELETE multiple TI indicators by External IDs
 > * PATCH and DELETE bulk TI indicators currently support only `Azure Sentinel` **targetProduct**.
-> * **targetProduct** and **expirationDateTime** are required for PATCH one TI indicator and PATCH and DELETE multiple TI indicators.
+> * **targetProduct** and **expirationDateTime** are required for PATCH one TI indicator and PATCH multiple TI indicators.
 
 ## App Registration
 To configure the sample, you'll need to register a new application in the Microsoft [Application Registration Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
