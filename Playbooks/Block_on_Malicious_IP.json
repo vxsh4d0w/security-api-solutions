@@ -59,7 +59,7 @@
                           "Importance": "Normal",
                           "Options": "Approve, Reject",
                           "Subject": "Approval Request",
-                          "To": "chi@amplifycp.com"
+                          "To": "<analyst_email>"
                         },
                         "NotificationUrl": "@{listCallbackUrl()}"
                       },
