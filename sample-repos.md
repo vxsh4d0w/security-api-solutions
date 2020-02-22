@@ -12,6 +12,7 @@ We have samples in the following languages for Microsoft Graph Security API with
 
 | **Language**   | **Repo** | **Issues** | **More Info** |
 |:---------------|:--------|:----------|:----------------|
+| QuickStarts | [Sample](https://github.com/microsoftgraph/security-api-solutions/tree/master/QuickStarts) | [Issues](https://github.com/microsoftgraph/security-api-solutions/issues) | [Documentation](https://aka.ms/graphsecuritydocs)  |
 | General - Authentication | [Sample](https://github.com/microsoftgraph/Graph-Security-API-Auth-Sample) | [Issues](https://github.com/microsoftgraph/Graph-Security-API-Auth-Sample/issues) | [Documentation](https://aka.ms/graphsecurityauth)  |
 | .NET - ASPNET MVC | [Sample](https://github.com/microsoftgraph/aspnet-security-api-sample) | [Issues](https://github.com/microsoftgraph/aspnet-security-api-sample/issues) | [Get Started-ASP.NET](https://developer.microsoft.com/en-us/graph/get-started/asp.net) |
 | Python | [Sample](https://github.com/microsoftgraph/python-security-rest-sample) | [Issues](https://github.com/microsoftgraph/python-security-rest-sample/issues) | [Get Started-Python](https://developer.microsoft.com/en-us/graph/get-started/python) |

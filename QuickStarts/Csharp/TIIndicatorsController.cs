@@ -120,7 +120,7 @@ namespace MSGraphSecurity
             //convert oldTI to Json object
             var tiJson = JsonConvert.DeserializeObject<TiIndicator>(oldTI);
 
-            //then add vendorInformation to the PATCH body
+            //then add targetProduct & expirationDateTime to the PATCH body
             tIIndicator.TargetProduct = tiJson.TargetProduct;
             tIIndicator.ExpirationDateTime = tiJson.ExpirationDateTime;
 

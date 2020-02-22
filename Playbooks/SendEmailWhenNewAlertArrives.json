@@ -1,0 +1,64 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "For_each_of_the_new_alerts,_send_an_email_with_all_alert_details": {
+                "actions": {
+                    "Send_the_alert_to_an_email_": {
+                        "inputs": {
+                            "body": {
+                                "Body": "<p>@{items('For_each_of_the_new_alerts,_send_an_email_with_all_alert_details')}</p>",
+                                "Subject": "@items('For_each_of_the_new_alerts,_send_an_email_with_all_alert_details')?['title']",
+                                "To": "<Recipient_Email_Address>"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['office365']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/v2/Mail"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "foreach": "@triggerBody()?['value']",
+                "runAfter": {},
+                "type": "Foreach"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "On_all_new_alerts": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['microsoftgraphsecurity']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/trigger/v1.0/security/alerts"
+                },
+                "recurrence": {
+                    "frequency": "Minute",
+                    "interval": 3
+                },
+                "type": "ApiConnection"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+            }
+        }
+    }
+}

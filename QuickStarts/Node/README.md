@@ -15,9 +15,9 @@ This repository contains a very simple Node application that implements the Micr
 > - **targetProduct** and **expirationDateTime** are required for PATCHing TIs.
 
 ## App Registration
-To configure the sample, you'll need to register a new application in the Microsoft [Application Registration Portal](https://go.microsoft.com/fwlink/?linkid=2083908).
+To configure the sample, you'll need to register a new application in the Microsoft [Application Registration Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 Follow these steps to register a new application:
-1. Sign in to the [Application Registration Portal](https://go.microsoft.com/fwlink/?linkid=2083908) using either your personal or work or school account.
+1. Sign in to the [Application Registration Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) using either your personal or work or school account.
 
 2. Choose **New registration**.
 
@@ -29,16 +29,14 @@ Follow these steps to register a new application:
 
 6. Under **API permissions**, choose **Add a permission > Microsoft Graph**.
 
-7. Under **Application Permissions**, add the permissions/scopes required for the sample. This sample requires **ThreatIndicators.ReadWrite.OwnedBy**.
+7. Under **Application Permissions**, add the permissions/scopes required for the sample. This sample requires **ThreatIndicators.ReadWrite.OwnedBy**, **SecurityEvents.ReadWrite.All**.
     >Note: See the [Microsoft Graph permissions reference](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) for more information about Graph's permission model.
 
-As the final step in configuring the script, modify the config.py file in the root folder of your cloned repo.
-
-Update the variables in app.js as follows:
+As the final step in configuring the script, modify the config.js file in the root folder of your cloned repo.
 ```
-const appId = '<enter your application/client ID>';
-const appSecret = '<enter your application/client secret>';
-const tenantId = '<enter your tenant ID>';
+appId:'<enter your application/client ID>';
+appSecret: '<enter your application/client secret>';
+tenantId: '<enter your tenant ID>';
 ```
 Once changes are complete, save the file. After you've completed these steps and have received [admin consent](https://github.com/microsoftgraph/python-security-rest-sample#Get-Admin-consent-to-view-Security-data) for your app, you'll be able to run the app.js sample as covered below.
 
