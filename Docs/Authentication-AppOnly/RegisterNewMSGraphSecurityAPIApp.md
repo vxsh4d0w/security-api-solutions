@@ -18,13 +18,13 @@ Follow these steps to register a new application:
 7. Next, you'll see the **overview page** and your app ID (7), and Directory (tenant) ID (8). Copy and save these fields. You will need them later to complete the configuration process.
 8. Click on **View API Permissions** (9) to display the Graph permissions screen.
 
-    ![Figure 3. Application overview page](app_overview.PNG)
+    ![Figure 3. Application overview page](app_overview.png)
 
 9. In the **API Permission screen**, click on the **Add a permission** button (11) and select  **Microsoft Graph** (12).
 
     ![Figure 4. Application permissions](app_perms.PNG)
 
-10. Next, select **Application permissions** (13) in the Request AP permission pane that opens.
+10. Next, select **Application permissions** (13) in the Request API permission pane that opens.
 
     ![Figure 5. Application Auth mode (permissions) ](app_only.PNG)
 
@@ -34,7 +34,7 @@ Follow these steps to register a new application:
 
 12. Login to the Azure Portal as the Azure Active Directory Tenant Administrator for your organization and navigate to App registration/API permissions screen. Click on **Grant admin consent for the AAD tenant** (16).
 
-    ![Figure 6. Select API permissions](perm_select.PNG)
+    ![Figure 6. Select API permissions](perm_select.png)
 
 13. Under **Certificates & secrets** (17), choose **New client secret** (18). A new secret will be displayed in the Value column. Copy this password – this is the only time you’ll be able to. You will need it later to complete the configuration process.
 
