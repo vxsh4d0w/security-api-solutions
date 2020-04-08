@@ -70,9 +70,9 @@ Possible values for **targetProduct** are: `Azure Sentinel`, `Microsoft Defender
 #### Misp Event Filter
 Filters can be set in the config.py file under the "misp_event_filters" property
 
-Below is a list of parameters that can be passed to the filter (source: https://pymisp.readthedocs.io/modules.html):
+Below is a list of parameters that can be passed to the filter (source: https://buildmedia.readthedocs.org/media/pdf/pymisp/latest/pymisp.pdf):
 * limit (Optional[int]) – Limit the number of results returned, depending on the
-scope (for example 10 attributes or 10 full events).
+scope (for example, 10 events).
 * page (Optional[int]) – If a limit is set, sets the page to be returned. page 3, limit 100
 will return records 201->300).
 * value (Optional[~SearchParameterTypes]) – Search for the given value in the attributes’ value field.
