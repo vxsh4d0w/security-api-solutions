@@ -71,21 +71,75 @@ Possible values for **targetProduct** are: `Azure Sentinel`, `Microsoft Defender
 Filters can be set in the config.py file under the "misp_event_filters" property
 
 Below is a list of parameters that can be passed to the filter (source: https://pymisp.readthedocs.io/modules.html):
-* values – values to search for
-* not_values – values not to search for
-* type_attribute – Type of attribute
-* category – Category to search
-* org – Org reporting the event
-* tags – Tags to search for
-* not_tags – Tags not to search for
-* date_from – First date (Format: '2019-01-01')
-* date_to – Last date (Format: '2019-01-01')
-* last – Last published events (for example 5d or 12h or 30m)
-* eventid – Evend ID
-* withAttachments – return events with or without the attachments
-* uuid – search by uuid
-* publish_timestamp – the publish timestamp (Note: Uses UNIX timestamp.  Format: '1551811160')
-* published – return only published events (Format: True or False)
+* limit (Optional[int]) – Limit the number of results returned, depending on the
+scope (for example 10 attributes or 10 full events).
+* page (Optional[int]) – If a limit is set, sets the page to be returned. page 3, limit 100
+will return records 201->300).
+* value (Optional[~SearchParameterTypes]) – Search for the given value in the attributes’ value field.
+* type_attribute (Optional[~SearchParameterTypes]) – The attribute type, any
+valid MISP attribute type is accepted.
+* category (Optional[~SearchParameterTypes]) – The attribute category, any valid
+MISP attribute category is accepted.
+* org (Optional[~SearchParameterTypes]) – Search by the creator organisation by supplying the organisation identifier.
+* tags (Optional[~SearchParameterTypes]) – Tags to search or to exclude. You can
+pass a list, or the output of build_complex_query
+* quick_filter (Optional[str]) – The string passed to this field will ignore all of
+the other arguments. MISP will return an xml / json (depending on the header sent) of all
+events that have a sub-string match on value in the event info, event orgc, or any of the
+attribute value1 / value2 fields, or in the attribute comment.
+* date_from (Union[date, int, str, float, None]) – Events with the date set to a
+date after the one specified. This filter will use the date of the event (Format: '2019-01-01').
+* date_to (Union[date, int, str, float, None]) – Events with the date set to a date
+before the one specified. This filter will use the date of the event (Format: '2019-01-01').
+* eventid (Optional[~SearchType]) – The events that should be included / excluded
+from the search
+* with_attachments (Optional[bool]) – If set, encodes the attachments / zipped
+malware samples as base64 in the data field within each attribute
+* metadata (Optional[bool]) – Only the metadata (event, tags, relations) is returned,
+attributes and proposals are omitted.
+* uuid (Optional[str]) – Restrict the results by uuid.
+* publish_timestamp (Union[date, int, str, float, None,
+Tuple[Union[date, int, str, float, None], Union[date, int, str, float,
+None]]]) – Restrict the results by the last publish timestamp (newer than). (Note: Uses UNIX timestamp.  Format: '1551811160').
+* timestamp (Union[date, int, str, float, None, Tuple[Union[date, int,
+str, float, None], Union[date, int, str, float, None]]]) – Restrict the results
+by the timestamp (last edit). Any event with a timestamp newer than the given timestamp
+will be returned. In case you are dealing with /attributes as scope, the attribute’s timestamp
+will be used for the lookup.
+* published (Optional[bool]) – Set whether published or unpublished events should
+be returned. Do not set the parameter if you want both.
+* enforce_warninglist (Optional[bool]) – Remove any attributes from the result
+that would cause a hit on a warninglist entry.
+* to_ids (Union[~ToIDSType, List[~ToIDSType], None]) – By default all attributes
+are returned that match the other filter parameters, irregardless of their to_ids setting. To
+restrict the returned data set to to_ids only attributes set this parameter to 1. 0 for the ones
+with to_ids set to False.
+* deleted (Optional[str]) – If this parameter is set to 1, it will return soft-deleted
+attributes along with active ones. By using “only” as a parameter it will limit the returned
+data set to soft-deleted data only.
+* include_event_uuid (Optional[bool]) – Instead of just including the event ID,
+also include the event UUID in each of the attributes.
+* include_event_tags (Optional[bool]) – Include the event level tags in each of
+the attributes.
+* event_timestamp (Union[date, int, str, float, None]) – Only return attributes from events that have received a modification after the given timestamp (Note: Uses UNIX timestamp.  Format: '1551811160').
+* sg_reference_only (Optional[bool]) – If this flag is set, sharing group objects
+will not be included, instead only the sharing group ID is set.
+* eventinfo (Optional[str]) – Filter on the event’s info field.
+* searchall (Optional[bool]) – Search for a full or a substring (delimited by % for
+substrings) in the event info, event tags, attribute tags, attribute values or attribute comment
+fields.
+* requested_attributes (Optional[str]) – [CSV only] Select the fields that you
+wish to include in the CSV export. By setting event level fields additionally, includeContext is not required to get event metadata.
+* include_context (Optional[bool]) – [Attribute only] Include the event data with
+each attribute. [CSV output] Add event level metadata in every line of the CSV.
+* headerless (Optional[bool]) – [CSV Only] The CSV created when this setting is
+set to true will not contain the header row.
+* include_sightings (Optional[bool]) – [JSON Only - Attribute] Include the
+sightings of the matching attributes.
+* include_decay_score (Optional[bool]) – Include the decay score at attribute
+level.
+* include_correlations (Optional[bool]) – [JSON Only - attribute] Include the
+correlations of the matching attributes.
 
 A list or a specific value can be passed to the above parameters. If a list is passed to the parameter, the filtered events are the result of the union of provided list.
 
@@ -93,40 +147,23 @@ This field needs to be a list that contains multiple filters. The filtered event
 
 #### First Example of How This Field can be Configured
 ```
-misp_event_filters = [
-    {
-        "type_attribute": 'mutex'
-    },
-    {
-        "type_attribute": 'filename|md5'
-    },
-]
-```
-An event meets this filtering criteria if the event has an attribute with attribute type of 'mutex' AND the event has an attribute with attribute type of 'filename|md5'.
-
-#### Second Example of How This Field can be Configured
-```
-misp_event_filters = [
-    {
-        "type_attribute": ['mutex', 'filename|md5']
-    }
-]
+misp_event_filters = {
+    "type_attribute": ['mutex', 'filename|md5']
+}
 ```
 An event meets this filtering criteria if the event has an attribute with attribute type of 'mutex' OR the event has an attribute with attribute type of 'filename|md5'.
 
-#### Third Example of How This Field can be Configured
+#### Second Example of How This Field can be Configured
 ```
-misp_event_filters = [
-    {
-        "values": 'http://www.test.com'
-    }
-]
+misp_event_filters = {
+    "value": 'http://www.test.com'
+}
 ```
 An event meets this filtering criteria if the event has an attribute with attribute value of 'http://www.test.com'.
 
-#### Fourth Example of How This Field can be Configured
+#### Third Example of How This Field can be Configured
 ```
-misp_event_filters = []
+misp_event_filters = {}
 ```
 This gets all events.
 
