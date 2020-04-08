@@ -1,4 +1,5 @@
 from pymisp import PyMISP
+from pymisp import ExpandedPyMISP
 import config
 from collections import defaultdict
 import datetime
@@ -10,12 +11,11 @@ from functools import reduce
 
 
 def _get_events():
-    misp = PyMISP(config.misp_domain, config.misp_key, config.misp_verifycert)
+    misp = ExpandedPyMISP(config.misp_domain, config.misp_key, config.misp_verifycert)
     if len(config.misp_event_filters) == 0:
-        return [event['Event'] for event in misp.search(values="")['response']]
+        return [event['Event'] for event in misp.search(controller='events', return_format='json')]
     events_for_each_filter = [
-        [event['Event'] for event in misp.search(**event_filter)['response']]
-        for event_filter in config.misp_event_filters
+        [event['Event'] for event in misp.search(controller='events', return_format='json', **config.misp_event_filters)]
     ]
     event_ids_for_each_filter = [set(event['id'] for event in events) for events in events_for_each_filter]
     event_ids_intersection = reduce((lambda x, y: x & y), event_ids_for_each_filter)
