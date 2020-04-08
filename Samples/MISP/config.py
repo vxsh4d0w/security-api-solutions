@@ -4,11 +4,10 @@ graph_auth = {
     'client_secret': '<client secret>',
 }
 targetProduct = '<targetProduct>'
-misp_event_filters = [
-    {
-        "type_attribute": ['mutex', 'filename|md5']
-    }
-]
+misp_event_filters = {
+    'org': '',
+    'category': ''
+}
 action = '<action>'
 passiveOnly = False
 days_to_expire = 5
