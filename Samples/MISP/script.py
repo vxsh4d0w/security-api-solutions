@@ -92,7 +92,7 @@ def main():
     total_indicators = sum([len(v['request_objects']) for v in parsed_events])
     with RequestManager(total_indicators) as request_manager:
         for request_body in _graph_post_request_body_generator(parsed_events):
-            print(f"request body: {request_body}")
+            #print(f"request body: {request_body}")
             request_manager.handle_indicator(request_body)
 
 
