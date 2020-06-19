@@ -205,12 +205,9 @@ class RequestManager:
         self.hash_of_indicators_to_delete.pop(indicator_hash, None) 
         if indicator_hash not in self.existing_indicators_hash:
             self.indicators_to_be_sent.append(indicator)
-        print(f"number of indicators to be sent: {len(self.indicators_to_be_sent)}")
-        #if len(self.indicators_to_be_sent) >= 100:
-            #if config.targetProduct in TARGET_PRODUCT_BULK_SUPPORT:
-        self._post_to_graph()
-        # else:
-        #     self._post_one_to_graph()
+        if len(self.indicators_to_be_sent) >= 100:
+            print(f"number of indicators sent: {self.success_count+self.error_count}")
+            self._post_to_graph()
 
     def _update_headers_if_expired(self):
         if self._get_timestamp() > self.headers_expiration_time:
